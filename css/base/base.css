@@ -16,7 +16,8 @@
 
 :root {
 	/* Colors */
-	--base-body-bg: #1a1a1aff;
+	/* --base-body-bg: #1a1a1aff; */
+	--base-body-bg: #00000050;
 	--base-bg: #00000060;
 	--base-color: #fefefeff;
 	--base-container: #f2f2f220;
@@ -43,7 +44,7 @@
 
 * {
 	box-sizing: border-box;
-	
+
 	/* Font rendering */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

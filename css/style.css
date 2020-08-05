@@ -7,12 +7,12 @@
 
 :root {
     --font: "SF Mono";
-    --background: #1a1c22;
+    --background: #101010;
     --foreground: #fffffe;
     --branch: 1px solid #a7a9be;
     --yellow: #d08770;
     --pink: #bf616a;
-    --blue: #5e81ac;
+    --blue: #88c0d0;
 }
 
 html {

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>vim_scripting</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+
+<p>
+░█░█░▀█▀░█▄█░░░█▀▀░█▀▀░█▀▄░▀█▀░█▀█░▀█▀░▀█▀░█▀█░█▀▀
+░▀▄▀░░█░░█░█░░░▀▀█░█░░░█▀▄░░█░░█▀▀░░█░░░█░░█░█░█░█
+░░▀░░▀▀▀░▀░▀░░░▀▀▀░▀▀▀░▀░▀░▀▀▀░▀░░░░▀░░▀▀▀░▀░▀░▀▀▀
+</p>
+
+
+
+<div id="Scripting the Vim editor, Part 1: Variables, values, and expressions"><h1 id="Scripting the Vim editor, Part 1: Variables, values, and expressions" class="header"><a href="#Scripting the Vim editor, Part 1: Variables, values, and expressions">Scripting the Vim editor, Part 1: Variables, values, and expressions</a></h1></div>
+
+
+<p>
+usr_41 41.1-41.5
+</p>
+
+<div id="Scripting the Vim editor, Part 1: Variables, values, and expressions-41.1 Introduction"><h2 id="41.1 Introduction" class="header"><a href="#Scripting the Vim editor, Part 1: Variables, values, and expressions-41.1 Introduction">41.1 Introduction</a></h2></div>
+
+<p>
+|41.4|	Conditionals
+|41.5|	Executing an expression
+</p>
+
+
+<p>
+Let's start with a simple example: &gt;
+</p>
+<pre vim>
+	:let i = 1
+	:while i &lt; 5
+	:  echo "count is" i
+	:  let i += 1
+	:endwhile
+&lt;
+
+
+In the first line the ":let" command assigns a value to a variable.  The
+generic form is: &gt;
+
+:let {variable} = {expression}
+
+
+The ":while" command starts a loop.  The generic form is: &gt;
+
+:while {condition}
+:  {statements}
+:endwhile
+
+there's  a more  pythonic way to do it
+
+for i in range(1,10)
+    echo blabla
+endfor
+
+    blabla
+    blabla
+    blabla
+    blabla
+    blabla
+    blabla
+    blabla
+    blabla
+    blabla
+    blabla
+
+</pre>
+
+<div id="Scripting the Vim editor, Part 1: Variables, values, and expressions-41.2 Variables"><h2 id="41.2 Variables" class="header"><a href="#Scripting the Vim editor, Part 1: Variables, values, and expressions-41.2 Variables">41.2 Variables</a></h2></div>
+
+<pre vim>
+
+Invalid names are "foo+bar" and "6var".
+
+
+   These variables are global.  To see a list of currently defined variables
+use this command: &gt;
+
+	:let
+
+This leads to confusion at least, and real problems at worst.  To avoid
+this, you can use a variable local to a script file by prepending "s:".  For
+example, one script contains this code: &gt;
+
+	:let s:count = 1
+	:while s:count &lt; 5
+	:  source other.vim
+	:  let s:count += 1
+	:endwhile
+
+More types of variables are:
+
+	b:name		variable local to a buffer
+	w:name		variable local to a window
+	g:name		global variable (also in a function)
+	v:name		variable predefined by Vim
+
+deleting variables
+
+
+This deletes the script-local variable "s:count" to free up the memory it
+uses.  If you are not sure if the variable exists, and don't want an error
+message when it doesn't, append !: &gt;
+
+	:unlet! s:count
+
+
+When a script finishes, the local variables used there will not be
+automatically freed.  The next time the script executes, it can still use the
+old value
+
+
+
+	:if !exists("s:call_count")
+	:  let s:call_count = 0
+	:endif
+	:let s:call_count = s:call_count + 1
+	:echo "called" s:call_count "times"
+
+
+:let count=10
+:if !exists("count")
+:   echom "count exists" count
+:endif
+
+
+	Vim automatically converts a string to a number when it is looking for
+	a number.  When using a string that doesn't start with a digit the
+	resulting number is zero.  Thus look out for this: &gt;
+		:if "true"
+	The "true" will be
+    interpreted as a zero, thus as false!
+
+
+:if "1false"
+: echom "true"
+:if "true"
+:   echom "not gonna run"
+:else
+:   echom "false"
+:endif
+
+
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+if &lt;condn&gt;
+    &lt;expr&gt;
+elseif &lt;condn&gt;
+    &lt;expr&gt;
+else
+    &lt;expr&gt;
+endif
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+
+
+</pre>
+
+<div id="Scripting the Vim editor, Part 1: Variables, values, and expressions-41.3	Expressions"><h2 id="41.3	Expressions" class="header"><a href="#Scripting the Vim editor, Part 1: Variables, values, and expressions-41.3	Expressions">41.3	Expressions</a></h2></div>
+
+<pre vim>
+
+
+
+</pre>
+
+</body>
+</html>

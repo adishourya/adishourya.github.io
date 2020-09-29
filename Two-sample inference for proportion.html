@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Two-sample inference for proportion</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="CONFIDENCE INTERVAL FOR DIFFERENCE BETWEEN 2 PROPORTIONS"><h1 id="CONFIDENCE INTERVAL FOR DIFFERENCE BETWEEN 2 PROPORTIONS" class="header"><a href="#CONFIDENCE INTERVAL FOR DIFFERENCE BETWEEN 2 PROPORTIONS">CONFIDENCE INTERVAL FOR DIFFERENCE BETWEEN 2 PROPORTIONS</a></h1></div>
+
+<ul>
+<li>
+Mostly when making constructing a sample proportion
+
+<li>
+you would not have pop paramters . (And no one makes a hypothesis while
+
+</ul>
+<p>
+constructing c.i)
+so std dev here is calculated using √(p_sample*q_sample/n)
+</p>
+
+<p>
+c.i → choose significance level → corresponding z*
+ci = p_sample - (z* x s) ≤ P_pop ≤ p_sample + (z* x s)
+</p>
+
+<p>
+now if there were 2 samples
+</p>
+
+
+<p>
+ci₁ = p_sample₁ - (z* x s₁) ≤ P_pop₁ ≤ p_sample₁ + (z* x s₁)
+ci₂ = p_sample₂ - (z* x s₂) ≤ P_pop₂ ≤ p_sample₂ + (z* x s₂)
+</p>
+
+<p>
+so if we diff it
+ci → (P_pop1 - P_pop2) ± z* (s₁₂)
+<span id="CONFIDENCE INTERVAL FOR DIFFERENCE BETWEEN 2 PROPORTIONS-now s₁₂ is not simply s₁ - s₂ but √(s₁² + s₂²)"></span><strong id="now s₁₂ is not simply s₁ - s₂ but √(s₁² + s₂²)">now s₁₂ is not simply s₁ - s₂ but √(s₁² + s₂²)</strong>
+</p>
+
+
+<div id="CONFIDENCE INTERVAL FOR DIFFERENCE BETWEEN 2 PROPORTIONS-EXAMPLE"><h2 id="EXAMPLE" class="header"><a href="#CONFIDENCE INTERVAL FOR DIFFERENCE BETWEEN 2 PROPORTIONS-EXAMPLE">EXAMPLE</a></h2></div>
+
+<p>
+Duncan is investigating if the residents of the city support construction of a
+new school . He is curious about the difference between northerners and
+southerners . He obtained 2 random samples form both region as shown in the
+table below.Duncan wants to construct a 90% c.i to estimate the difference  psouth - pnorth.
+Assume that all conditions for constructing a c.i has been met.
+</p>
+
+<table>
+<tr>
+<th>
+supports construction
+</th>
+<th>
+North
+</th>
+<th>
+South
+</th>
+</tr>
+<tr>
+<th>
+Yes
+</th>
+<th>
+54
+</th>
+<th>
+77
+</th>
+</tr>
+<tr>
+<th>
+No
+</th>
+<th>
+66
+</th>
+<th>
+63
+</th>
+</tr>
+<tr>
+<th>
+Total
+</th>
+<th>
+120
+</th>
+<th>
+140
+</th>
+</tr>
+</table>
+
+<p>
+sample 1
+</p>
+<blockquote>
+p_sample1 = 54/120 = 0.45
+s1² = (0.45 * 0.55 / 120) = 0.002
+</blockquote>
+<p>
+sample2
+</p>
+<blockquote>
+p_sample2 = 77/140 = 0.55
+s2² = (0.55 * 0.45 / 140) = 0.0017
+</blockquote>
+
+<dl>
+<dt>from z-table </dt>
+<dd>90 % is b/n 1.64 and 1.65</dd>
+</dl>
+
+<pre python>
+import scipy.stats as st
+# a 90% ci would have 5% on either side
+z_crit = st.norm.ppf(0.95)
+# z_crit = 1.64485
+</pre>
+
+<p>
+ci = (p_sample2-p_sample1) ± 1.645 (√(s1 + s2))
+</p>
+<blockquote>
+(0.1) ± 1.645 (√0.0038)
+(0.1) ± 1.645(0.062)
+0.1 ± 0.1018
+</blockquote>
+
+<p>
+Ans : -0.0018088512237516285  p1-p2 ≤ 0.2018088512237517
+</p>
+
+<div id="HYPOTHESIS TEST FOR DIFFERENCE IN PROPRTION"><h1 id="HYPOTHESIS TEST FOR DIFFERENCE IN PROPRTION" class="header"><a href="#HYPOTHESIS TEST FOR DIFFERENCE IN PROPRTION">HYPOTHESIS TEST FOR DIFFERENCE IN PROPRTION</a></h1></div>
+
+<p>
+Here are the results of a recent poll from 2 neighbouring district
+</p>
+
+<table>
+<tr>
+<th>
+support new law
+</th>
+<th>
+District A
+</th>
+<th>
+DistrictB
+</th>
+</tr>
+<tr>
+<th>
+Yes
+</th>
+<th>
+58
+</th>
+<th>
+52
+</th>
+</tr>
+<tr>
+<th>
+No
+</th>
+<th>
+42
+</th>
+<th>
+48
+</th>
+</tr>
+<tr>
+<th>
+total
+</th>
+<th>
+100
+</th>
+<th>
+100
+</th>
+</tr>
+</table>
+
+
+<p>
+Does this suggest a <span id="HYPOTHESIS TEST FOR DIFFERENCE IN PROPRTION-significant"></span><strong id="significant">significant</strong> difference b/n 2 districts ?
+</p>
+
+<dl>
+<dt>soll </dt>
+<dd>so what it's asking is for a significant test</dd>
+</dl>
+
+<p>
+so to setup hypothesis
+</p>
+
+<p>
+H₀: Pa = Pb (definition)
+H₁: Pa ≠ Pb
+</p>
+
+<p>
+let's take a significance level of 5%
+so like any other proprtion hypothesis testing
+we fill find the z-score . but for the difference of pop
+</p>
+
+<p>
+abs(z) = abs (Pa - Pb / sab)
+</p>
+
+<p>
+now , (σab)² = (σa)² + (σb)²
+</p>
+
+<p>
+sa ² = 0.58 * 0.42 / 100 = 0.0024
+sb ² = 0.52 * 0.48 / 100 = 0.0025
+</p>
+
+<p>
+(σab)² = 0.005
+sab = 0.0707
+</p>
+
+<p>
+z_score = 0.06 / 0.07
+z_score = 0.8485
+</p>
+
+<p>
+Find Pvalue
+</p>
+<pre python>
+import scipy.stats as st
+p_value = 2 * st.norm.sf(0.8485) # this is double sided
+# p_value = 0.3897 ans
+</pre>
+
+<p>
+P_value = 38.97 % &gt; 5%
+so there is not sufficient evidence to reject null hypothesis.
+</p>
+
+
+<div id="HYPOTHESIS TEST FOR DIFFERENCE IN PROPRTION-Example"><h2 id="Example" class="header"><a href="#HYPOTHESIS TEST FOR DIFFERENCE IN PROPRTION-Example">Example</a></h2></div>
+
+<p>
+Resarch shows that myopia is becoming more common over time . A study from 2000
+shows 132 cases in 400 randomly sampled people. while in 2015 it shows 228 in
+600 randomly sampled people
+</p>
+
+<p>
+set up siginficance level α = 5%
+Hypothesis
+H₀ : P2000 = P2015
+H₁ : P2000 &lt; P2015 (one-sided)
+</p>
+
+<p>
+p1 = p2000 =  132 /400
+p2 = p2015 = 228 / 600
+</p>
+
+<p>
+s12 → s₁² ; s22 → s₂²
+</p>
+
+<pre python>
+In [4]: s12 = p1*(1-p1) / 400
+
+In [5]: s22 = p2*(1-p2) / 600
+
+In [6]: s12
+Out[6]: 0.00055275
+
+In [7]: s22
+Out[7]: 0.00039266666666666665
+
+In [8]: d = (s12 + s22) ** 0.5
+
+In [9]: d
+Out[9]: 0.03074762863485031
+
+In [10]: z_score = abs(p1-p2) /d
+
+In [11]: z_score
+Out[11]: 1.626141664249465
+
+In [12]: import scipy.stats as st
+
+In [13]: st.norm.sf(z_score)
+Out[13]: 0.051959761265061896
+</pre>
+<p>
+since our p_val is ever so slightly greater than significance level
+we cannot reject null hypothesis
+</p>
+
+<div id="HYPOTHESIS TEST FOR DIFFERENCE IN PROPRTION-Example"><h2 id="Example" class="header"><a href="#HYPOTHESIS TEST FOR DIFFERENCE IN PROPRTION-Example">Example</a></h2></div>
+
+<p>
+A university offers course both online and classroom prog. Teachers were
+curious about passing rate b/n the 2 setting.Data showed that 80% was the
+passing rate for students taking classromm prog . and 75 % passing rate for
+online.The teachers then constructed a 95% ci of pclass - ponline which came
+out to be (-0.04,0.14) . They want this ci to perform a significance test
+</p>
+
+<p>
+H₀ : Pclass = Ponline
+H₁ : Pclass ≠ Ponline
+</p>
+
+<p>
+<span class="todo">XXX</span>
+if 95 % ci overlaps with assumed value in null hypothesis here 0  <span id="HYPOTHESIS TEST FOR DIFFERENCE IN PROPRTION-Example-fail"></span><strong id="fail">fail</strong> to reject null hypothesis
+if 95 % ci <span id="HYPOTHESIS TEST FOR DIFFERENCE IN PROPRTION-Example-does not"></span><strong id="does not">does not</strong> overlaps with assumed value in null hypothesis here 0  reject null hypothesis
+</p>
+
+<p>
+since here the 95% ci does overlap with 0 the assumed value in null hypo.
+we would fail to reject null hypothesis
+</p>
+
+</body>
+</html>

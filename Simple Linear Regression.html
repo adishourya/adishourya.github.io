@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Simple Linear Regression</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Calculating correlation coef"><h1 id="Calculating correlation coef" class="header"><a href="#Calculating correlation coef">Calculating correlation coef</a></h1></div>
+
+<dl>
+<dt>r = (1/n-1) * (zx*zy) </dt>
+<dd>where zx and zy are z-scores</dd>
+</dl>
+<p>
+to check how to manually calculate
+read : <a href="/home/adi/Documents/my-notes/corrcoef.py">calculating correlation by hand</a>
+</p>
+
+
+<div id="Calculating correlation coef-equation of a Trend line"><h2 id="equation of a Trend line" class="header"><a href="#Calculating correlation coef-equation of a Trend line">equation of a Trend line</a></h2></div>
+
+
+<p>
+y_hat = β0 * x + β1
+</p>
+
+<dl>
+<dt>where </dt>
+<dd>β0 = r * (σy / σx)</dd>
+</dl>
+<p>
+now if we know β0 we can calculate β1
+</p>
+<ul>
+<li>
+as we know for a least squared reg line must pass through (μx , μy)
+
+</ul>
+
+<p>
+μy = r*(σy/σx) + β1
+</p>
+
+<div id="Calculating correlation coef-equation of a Trend line-Residual plot"><h3 id="Residual plot" class="header"><a href="#Calculating correlation coef-equation of a Trend line-Residual plot">Residual plot</a></h3></div>
+
+<ul>
+<li>
+why bother making a residual plot ?
+
+</ul>
+
+<dl>
+<dd>The general idea is if you see the points pretty evenly</dd>
+</dl>
+<p>
+scattered above and below the line (x-axis of resid plot)
+and dont really discern with a trend . Maybe a linear model may not
+be the best answer. Maybe a non-linear model would work better
+</p>
+
+<dl>
+<dt>how it should be  </dt>
+<dd><a href="/home/adi/Documents/my-notes/resid_random.png">random_residuals</a></dd>
+<dt>how it shant be   </dt>
+<dd><a href="/home/adi/Documents/my-notes/resid_pattern.png">pattern'ed residuals</a></dd>
+</dl>
+
+<div id="Calculating correlation coef-R²  (the big boy)"><h2 id="R²  (the big boy)" class="header"><a href="#Calculating correlation coef-R²  (the big boy)">R²  (the big boy)</a></h2></div>
+
+
+<ul>
+<li>
+in a way,r, squared measures how much prediction error is eliminated when we use least-squares regression.
+
+<li>
+comapred to the worst trend line which would be r(correlation coefficient) = 0.
+
+<li>
+y_hat = r*(sy/sx) *x + c | @r=0 ⇒ y_hat = c
+
+<li>
+now a trend line always passes through y_avg and x_avg .substituting
+
+<li>
+gives us y_hat = y_avg
+
+</ul>
+
+<dl>
+<dt>  </dt>
+<dd>how much % squared err was removed compared to y_avg</dd>
+</dl>
+
+<dl>
+<dt>  </dt>
+<dd>  r² = err₁ - err₂ / err₁</dd>
+</dl>
+
+<p>
+where err₁ = squared err of trend line
+where err₂ = squared err of y_avg line
+</p>
+
+<p>
+Many formal definitions say that
+ r, squared tells us what percent of the variability in the y variable is
+ accounted by the regression line
+</p>
+
+
+<div id="Calculating correlation coef-R²  (the big boy)-*later in multiple regression* :: TODO link the wiki here"><h6 id="*later in multiple regression* :: TODO link the wiki here" class="header"><a href="#Calculating correlation coef-R²  (the big boy)-*later in multiple regression* :: TODO link the wiki here"><span id="Calculating correlation coef-R²  (the big boy)-*later in multiple regression* :: <span class="todo">TODO</span> link the wiki here--later in multiple regression"></span><strong id="later in multiple regression">later in multiple regression</strong> :: <span class="todo">TODO</span> link the wiki here</a></h6></div>
+
+
+<ul>
+<li>
+When our model we have multiple independent variables, we use Adjusted
+  R-Squared instead of R-Squared value for model evaluation.
+
+</ul>
+
+<ul>
+<li>
+Because when we have more independent variable in R-Squared
+  calculation(weather they are correlated or not correlated), R-squared value
+  automatically get increased due to slope coefficient value.  R Squared
+  Formula
+
+</ul>
+
+<ul>
+<li>
+In Adjusted R-Squared calculations, it penalizes the independent variables
+  which are not correlated to the dependent variable. So there is no impact of
+  independent variable which are not correlated to dependent variable. So in
+  our Multiple Regression cases we use Adjusted R square for model accuracy
+  check instead of R-Square.
+
+</ul>
+
+<p>
+adjusted R² = <a href="/home/adi/Documents/my-notes/adjustedr2.png">adjusted R squared equation</a>
+</p>
+
+</body>
+</html>

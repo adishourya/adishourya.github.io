@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>confidence interval for proportions</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Intro"><h1 id="Intro" class="header"><a href="#Intro">Intro</a></h1></div>
+
+<p>
+It's also called one sample ẕ - interval.
+</p>
+
+<ul>
+<li>
+There is a 95% chance that P (true pop proportion) lies within 2σ_phat of p_hat
+
+<ul>
+<li>
+where p_hat is the sample proportion of proportion  &amp; σ_phat = √pq/n
+
+<li>
+for a 95% confidence level/interval
+
+<li>
+read :  <a href="Modelling Data Distribution.html">Modelling Data Distribution</a>
+
+</ul>
+</ul>
+
+<div id="Intro-Standard Error"><h3 id="Standard Error" class="header"><a href="#Intro-Standard Error">Standard Error</a></h3></div>
+<p>
+is just σ_phat
+</p>
+
+<div id="Intro-Margin of err"><h3 id="Margin of err" class="header"><a href="#Intro-Margin of err">Margin of err</a></h3></div>
+<p>
+moe = 2SE for a 95% interval
+</p>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+→ Suppose a sample is drawn from a pop of 100 . And the sample's prop is p_hat
+= 0.54 . Build a 95% confidence level
+</p>
+
+<p>
+std_err = σ_phat = √pq/n = √(0.54*0.46/100) = 0.047
+95% c.i = p_hat + 2 S.E ≤ P ≥ p_hat + 2S.E == 0.54 - 2*0.047 ≤ P ≥ 0.54 + 2*0.047
+</p>
+
+<dl>
+<dt>0.44 ≤ P ≥ 0.64 </dt>
+<dd>There is a 95% chance of this inequality being true</dd>
+</dl>
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+
+<div id="Intro-Conditions for valid c.i"><h2 id="Conditions for valid c.i" class="header"><a href="#Intro-Conditions for valid c.i">Conditions for valid c.i</a></h2></div>
+<ol>
+<li>
+should be a truly random sample
+
+<li>
+Assuming sample dist of sample prop is normal :: shape of sample dist.
+
+</ol>
+<p>
+There are 2 rules of thumb to see if sample dist of sample prop is normal
+</p>
+<ul>
+<li>
+np ≥ 10
+
+<li>
+nq ≥ 10
+
+</ul>
+<li>
+Independence rule. i.e sampling with replacement can be assumed if sample
+   size ≤ 10% of pop size
+
+
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+<dl>
+<dt>how to get critical ẕ- value to calculate </dt>
+<dd>p_hat + ẕS.E ≤ P ≥ p_hat + ẕS.E</dd>
+</dl>
+by using z table ?
+<dl>
+<dt>read </dt>
+<dd><a href="/home/adi/Documents/my-notes/z_ci.png">critical zstar</a></dd>
+</dl>
+to get 94% c.i . there would be 3% on either side of the tail
+however z table gives the area covered from -∞ .
+so on a ẕ-table it would be equivalent to get z value which covers 97% of the area.
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+
+<p>
+→ Della has over 500 songs on her phone and she wants to estimate what prop of
+songs are by a female artist . she takes a sample of 50 songs and finds 20 are
+by a female artist . Based on this sample she wants a c.i of 99 %
+</p>
+
+<dl>
+<dt>sol </dt>
+</dl>
+<p>
+Let's see if req's are met to gen a c.i
+</p>
+<ol>
+<li>
+random sample ✓
+
+<li>
+np = 50 x 0.4 , nq = 50 x 0.6 ≥ 10 ✓
+
+<li>
+50 ≤ 10 % 500 ✓
+
+</ol>
+
+<p>
+p_hat = 20/50 = 0.4
+s.e = √pq/n = √(0.4 x 0.6 / 50)
+ẕ refering <a href="/home/adi/Documents/my-notes/standardnormaltable.pdf">file:standardnormaltable.pdf</a>
+</p>
+<ul>
+<li>
+a 99% c.i will leave 0.5 % on either side of the tail
+
+<li>
+equivalent to 99.5 % in z table
+
+<li>
+which is around ~2.58
+
+</ul>
+
+<p>
+Ans : 0.4 ± 2.58 √(0.4  x 0.6 / 50)
+</p>
+
+</body>
+</html>

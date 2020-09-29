@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Chi^2 for cat data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="CHI SQR STATISTIC FOR HYPO TESTING OR GOODNESS OF FIT"><h1 id="CHI SQR STATISTIC FOR HYPO TESTING OR GOODNESS OF FIT" class="header"><a href="#CHI SQR STATISTIC FOR HYPO TESTING OR GOODNESS OF FIT">CHI SQR STATISTIC FOR HYPO TESTING OR GOODNESS OF FIT</a></h1></div>
+
+<p>
+suppose in a quiz there are 4 options a , b ,c and d . Some students claim that
+the dist of correct answers were not uniform . so an independent group performs
+an expirement by randomly sampling 100 questions from the given question bank and
+gets the result as shown below
+</p>
+
+<table>
+<tr>
+<th>
+option
+</th>
+<th>
+expected
+</th>
+<th>
+actual
+</th>
+</tr>
+<tr>
+<th>
+a
+</th>
+<th>
+25
+</th>
+<th>
+20
+</th>
+</tr>
+<tr>
+<th>
+b
+</th>
+<th>
+25
+</th>
+<th>
+20
+</th>
+</tr>
+<tr>
+<th>
+C
+</th>
+<th>
+25
+</th>
+<th>
+25
+</th>
+</tr>
+<tr>
+<th>
+d
+</th>
+<th>
+25
+</th>
+<th>
+35
+</th>
+</tr>
+</table>
+
+<p>
+let α = 5%
+H₀ : p(a|b|c|d) = 0.25
+H₁ : p(a|b|c|d) ≠ 0.25
+</p>
+
+<p>
+so χ² is calculated as Σ (expected - actual)² / expected
+</p>
+
+<p>
+χ² = (25/25) + (25/25) + 0 + (100/25) = 6
+df = ε -1 = 4-1 =3
+</p>
+<pre python>
+
+In [1]: import scipy.stats as st
+
+In [2]: st.chi2.sf(6,df=3)
+Out[2]: 0.11161022509471268
+
+</pre>
+
+<p>
+since the pvalue = 11.16 % is &gt; sig. level 5%
+There is not enough evidence to reject null hypothesis.
+</p>
+
+<div id="CHI SQR TEST FOR RELATIONSHIPS"><h1 id="CHI SQR TEST FOR RELATIONSHIPS" class="header"><a href="#CHI SQR TEST FOR RELATIONSHIPS">CHI SQR TEST FOR RELATIONSHIPS</a></h1></div>
+
+<div id="CHI SQR TEST FOR RELATIONSHIPS-Test for Homogenity"><h2 id="Test for Homogenity" class="header"><a href="#CHI SQR TEST FOR RELATIONSHIPS-Test for Homogenity">Test for Homogenity</a></h2></div>
+<p>
+<span id="CHI SQR TEST FOR RELATIONSHIPS-Test for Homogenity-2 pop are given"></span><strong id="2 pop are given">2 pop are given</strong>
+</p>
+
+<p>
+Is there a  bias b/n left handed and right handed students to their majors?
+100 people were randomly sampled of which 60 were right handed thier pref can
+be seen from the given table
+</p>
+
+<table>
+<tr>
+<th>
+majors
+</th>
+<th>
+Right
+</th>
+<th>
+Left
+</th>
+<th>
+Total
+</th>
+</tr>
+<tr>
+<th>
+Stem
+</th>
+<th>
+30
+</th>
+<th>
+10
+</th>
+<th>
+40
+</th>
+</tr>
+<tr>
+<th>
+Humanities
+</th>
+<th>
+15
+</th>
+<th>
+25
+</th>
+<th>
+40
+</th>
+</tr>
+<tr>
+<th>
+No preference
+</th>
+<th>
+15
+</th>
+<th>
+5
+</th>
+<th>
+20
+</th>
+</tr>
+<tr>
+<th>
+Total
+</th>
+<th>
+60
+</th>
+<th>
+40
+</th>
+<th>
+100
+</th>
+</tr>
+</table>
+
+<p>
+H₀ : p(stem|humanities|No Preference) are equal
+H₁ : unequal
+</p>
+
+<p>
+so expected values can be found from the right (total) column
+</p>
+<ul>
+<li>
+40% chose stem
+    expected right : 40% of 60  = 24
+    expected left  : 40% of 40 = 16
+
+<li>
+40 % chose Humanities
+    expected right : 40% of 60 = 24
+    expected left : 40 % of 40 = 16
+
+<li>
+20 % had no pref.
+    exp right : 20 % of 60 = 12
+    exp left : 20% of 40 = 8
+
+</ul>
+
+<p>
+Calculating χ² value :
+Σ (act - exp)² / exp
+</p>
+
+<p>
+for right = 36 / 24 + 81/24 + 9/12
+for left = 36 / 16 + 81/16 + 9/8
+</p>
+
+<pre python>
+In [0]: left
+Out[0]: 8.4375
+
+In [1]: right
+Out[1]: 5.625
+
+In [2]: chi2_val = left + right
+
+In [3]: chi2_val
+Out[3]: 14.0625
+
+In [4]: import scipy.stats as st
+
+In [5]: columns = 2 ; rows = 3
+
+In [6]: dof = (columns -1 ) * (rows -1)
+
+In [7]: dof
+Out[7]: 2
+
+In [8]: st.chi2.sf(chi2_val,df=dof)
+Out[8]: 0.0008838263069350504
+
+</pre>
+
+<div id="CHI SQR TEST FOR RELATIONSHIPS-For Association"><h2 id="For Association" class="header"><a href="#CHI SQR TEST FOR RELATIONSHIPS-For Association">For Association</a></h2></div>
+<p>
+<span id="CHI SQR TEST FOR RELATIONSHIPS-For Association-only 1 pop is available"></span><strong id="only 1 pop is available">only 1 pop is available</strong>
+</p>
+
+<p>
+<em>How about Comparing foot length to hand length</em>
+</p>
+
+</body>
+</html>

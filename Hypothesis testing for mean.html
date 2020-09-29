@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Hypothesis testing for mean</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+pre-req:
+read :  <a href="Sampling Distribution of Sample Mean.html">Sampling Distribution of Sample Mean</a>
+for basics:
+read : <a href="Recap Hypothesis Testing.html">Recap Hypothesis Testing</a>
+</p>
+
+<div id="Example"><h2 id="Example" class="header"><a href="#Example">Example</a></h2></div>
+<p>
+Regulations require milk containers to have 128 fluid ounces and the milk
+processor is said to be in compliance with that . Variability in the filling
+process is normal A random sample of size 12 was drawn and the test stat were
+x_bar = 127.2 fluid ounce and dev = 2.1 ounce Is there sufficient evidence that
+the packaging plant is not in compliance with the regulations
+</p>
+
+<p>
+soll:
+let significance level α be 5%
+H₀ : μ = 128 foz
+H₁ : μ &lt; 128 foz
+</p>
+
+<p>
+Req:
+orig sample : var normally dist ✓
+Randomly dist. ✓
+assuming plant makes more than 120 bottles : 12 ≤ 10% * (&gt;120) ✓
+</p>
+
+<p>
+Test stat
+x_bar = 127.2
+sx = 2.1
+</p>
+
+<p>
+t_abs = ( 128 - 127.2) / ( 2.1 / √12 )
+t_abs = 1.32
+</p>
+
+<p>
+calculate p_value
+</p>
+
+<pre python>
+import scipy.stats as st
+# n = sample_size
+p_val = st.t.sf(abs(t_val),n-1) # for one sided
+p_val = st.t.sf(abs(t_val),n-1) # for two sided
+</pre>
+
+<p>
+Result : p_val =  10.68 %
+since p_val &gt; 5% (α)
+failed to reject H₀
+Ans : There is not sufficient evidence that the plant is not in compliance with regulatory standards.
+</p>
+
+</body>
+</html>

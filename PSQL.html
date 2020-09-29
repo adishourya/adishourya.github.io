@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>PSQL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+What is a database ?
+</p>
+
+<ul>
+<li>
+A database in SQL server is made up of a collection of tables that stores a set of structured data
+
+<li>
+A table contains collection of rows called <em>records</em> and columns which is also reffered as <em>attributes</em>
+
+</ul>
+
+<div id="Create Databse"><h4 id="Create Databse" class="header"><a href="#Create Databse">Create Databse</a></h4></div>
+<pre sql>
+
+CREATE DATABASE test; -- creates a databse named test
+
+</pre>
+
+<div id="connect to a database"><h4 id="connect to a database" class="header"><a href="#connect to a database">connect to a database</a></h4></div>
+
+<pre sh>
+psql --host localhost -U postgres -d test
+</pre>
+
+
+<p>
+or just \c test from the psql shell
+</p>
+
+<div id="Delete Database"><h4 id="Delete Database" class="header"><a href="#Delete Database">Delete Database</a></h4></div>
+
+<pre sql>
+DROP DATABASE test;
+</pre>
+
+<div id="How to create a basic table"><h4 id="How to create a basic table" class="header"><a href="#How to create a basic table">How to create a basic table</a></h4></div>
+
+<p>
+\d to see all the relations in the database
+\d &lt;relation_name&gt; for more verbose description
+</p>
+
+<p>
+a basic syntax looks like
+</p>
+
+<pre sql>
+CREATE TABLE table_name(
+    columnname + datatype + constraints
+)
+</pre>
+
+<p>
+DROP TABLE table_name ; -- to drop the relation
+</p>
+
+<dl>
+<dt>read </dt>
+<dd><a href="/home/adi/Documents/my-notes/creating_table.sql">file:creating_table.sql</a></dd>
+</dl>
+
+<div id="Inserting into table"><h4 id="Inserting into table" class="header"><a href="#Inserting into table">Inserting into table</a></h4></div>
+
+<p>
+A basic syntax looks like
+</p>
+
+<pre sql>
+insert into table_name(
+attr1,
+attr2,
+...)
+values (rec1,rec2,...)
+
+</pre>
+
+
+<dl>
+<dt>read </dt>
+<dd><a href="/home/adi/Documents/my-notes/inserting_table.sql">file:inserting_table.sql</a></dd>
+</dl>
+
+<div id="Basically Read This"><h1 id="Basically Read This" class="header"><a href="#Basically Read This">Basically Read This</a></h1></div>
+
+<dl>
+<dt>read </dt>
+<dd><a href="/home/adi/Documents/my-notes/psql_queries.sql">file:psql_queries.sql</a></dd>
+</dl>
+
+</body>
+</html>

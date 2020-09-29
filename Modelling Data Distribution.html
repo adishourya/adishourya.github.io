@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Modelling Data Distribution</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+Just remeber the 68 - 95 -99.7 rule
+</p>
+
+
+<dl>
+<dd>68 % of the total sample or pop falls b/n → ( μ - σ  &lt;= μ &lt;= μ + σ )</dd>
+<dd>95 % of the total sample or pop falls b/n → ( μ - 2σ  &lt;= μ &lt;= μ + 2σ )</dd>
+<dd>99.7 % of the total sample or pop falls b/n → ( μ - 3σ  &lt;= μ &lt;= μ + 3σ )</dd>
+</dl>
+
+<pre python>
+import scipy.stats as st
+# a 95 % interval would have 2. 5% on either side
+z_crit = st.norm.ppf(0.975)
+</pre>
+
+</body>
+</html>

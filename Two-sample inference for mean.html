@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Two-sample inference for mean</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Constructing t-interval for diff of means"><h1 id="Constructing t-interval for diff of means" class="header"><a href="#Constructing t-interval for diff of means">Constructing t-interval for diff of means</a></h1></div>
+
+<p>
+Like in diff of prop
+diff of mean would be done as
+</p>
+
+<p>
+(x_bar1 - x_bar2) ± t* σ₁₂
+now dev would be calculated as expected
+sample dev of sample / √n
+</p>
+
+<p>
+and t* would be determined by significance level
+dof for t* would be min (n₁ - 1 , n₂ - 1)
+</p>
+
+<div id="Constructing t-interval for diff of means-Example"><h2 id="Example" class="header"><a href="#Constructing t-interval for diff of means-Example">Example</a></h2></div>
+
+<p>
+kyle suspects that when people exercise more their body temp changes
+group1 exercised for 30 mins : n1 = 18 ; x_bar1 = 38.3 ; s1 = 0.27
+group2 exercised for 60 mins : n2 = 24 ; x_bar1 = 38.9 ; s1 = 0.29
+</p>
+
+<p>
+construct a 90% ci 60-30
+</p>
+
+<pre python>
+import scipy.stats as st
+# a 90% ci would have 5% on either side
+# dof = min(n1-1,n2-1)
+t_crit = st.t.ppf(0.95,df=17)
+# t_crit = 1.739
+</pre>
+
+<p>
+0.6 ± 1.74 (√((0.27 / 18)+ (0.29/24)))
+</p>
+
+<div id="Paired T-test &amp; 2 Sample T-test"><h1 id="Paired T-test &amp; 2 Sample T-test" class="header"><a href="#Paired T-test &amp; 2 Sample T-test">Paired T-test &amp; 2 Sample T-test</a></h1></div>
+
+<p>
+In a Paired T-test
+for each member of pop. (same pop) you have test statistic of the same variable
+for e.g do people run fast in shorts or in pants ?
+</p>
+<blockquote>
+for the sampe pop you have pairs of speed
+</blockquote>
+
+<p>
+In 2 -sample T-tets
+you will have 2 different pop.
+for e.g salary diff of men and women
+</p>
+
+</body>
+</html>

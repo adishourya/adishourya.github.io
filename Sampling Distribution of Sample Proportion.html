@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Sampling Distribution of Sample Proportion</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+<span class="todo">XXX</span>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+<ul>
+<li>
+μ of a binomial dist = np
+
+<li>
+σ² of a binomial dist = npq
+
+<li>
+σ = √(npq)
+
+</ul>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+<ul>
+<li>
+for a sample dist.
+
+<li>
+μ_sample = μx / n = p
+
+<li>
+σ²_sample = npq/n²
+
+<li>
+σ_sample = √(npq) / n ⇒ √(pq/n)
+
+</ul>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+shape of sample dist.
+There are 2 rules of thumb to see if sample dist of sample prop is normal
+</p>
+<ul>
+<li>
+np ≥ 10
+
+<li>
+nq ≥ 10
+
+</ul>
+
+<p>
+eg1 : <a href="/home/adi/Documents/my-notes/sample_dist_prop1.png">example 1</a>
+	→ in this problem n = 50 ; p = 0.12
+	→ so for the sample dist. of sample prop. np = 6 ≤ 10 ∴ not normal
+	→ now the mean of sample dist of sample prop = p . which is 0.12
+	→ so the graph is skewed to the right
+</p>
+
+<p>
+eg2 : <a href="/home/adi/Documents/my-notes/sample_dist_prop2.png">example 2</a>
+	→ if true pop proportion is not given ;
+	the best assumption is the sample prop
+	→ here the true prop (p) = 0.15 ; n = 160
+	→ np &amp; nq ≥ 10 ∴ normally distributed sample dist.
+	→ x_bar = p = 0.15 &amp; s = √(pq/n) = 0.02823
+	→ read : <a href="/home/adi/Documents/my-notes/norm_cdf_calculator.py">file:norm_cdf_calculator.py</a>
+	→ ans : 0.96...
+</p>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+<div id="Example: Proportions in polling results"><h2 id="Example: Proportions in polling results" class="header"><a href="#Example: Proportions in polling results">Example: Proportions in polling results</a></h2></div>
+
+<p>
+According to the US Census Bureau's American Community Survey, 87,
+percent of Americans over the age of 25 have earned a high school diploma.
+Suppose we are going to take a random sample of 200 Americans in this
+age group and calculate what proportion of the sample has a high school
+diploma.
+</p>
+
+<p>
+What is the probability that the proportion of people in the sample
+with a high school diploma is less than 85, percent?
+</p>
+
+<div id="Example: Proportions in polling results-Let's solve"><h3 id="Let's solve" class="header"><a href="#Example: Proportions in polling results-Let's solve">Let's solve</a></h3></div>
+
+<p>
+<span id="Example: Proportions in polling results-Let's solve-Part 1: Establish normality"></span><strong id="Part 1: Establish normality">Part 1: Establish normality</strong>
+</p>
+
+<p>
+Question A (Part 1)
+What is the expected number of people in the sample with a high school diploma?
+</p>
+
+<p>
+x_bar = np = 200 x 0.87 = 174
+</p>
+
+<p>
+ANS:174 people
+</p>
+
+<p>
+Question B (Part 1)
+What is the expected number of people in the sample without a high school diploma?
+Ans:26 people
+</p>
+
+<p>
+Question C (Part 1)
+Is the sampling distribution of p_hat on top approximately normal?
+<dl>
+<dt>soll </dt>
+<dd>np = 174 &amp;&amp; nq = 26 ≥ 10 ∴ normally distributed</dd>
+</dl>
+</p>
+
+<p>
+Ans :Yes ✓ / No
+</p>
+
+
+<p>
+<span id="Example: Proportions in polling results-Let's solve-Part 2: Find the mean and standard deviation of the sampling distribution"></span><strong id="Part 2: Find the mean and standard deviation of the sampling distribution">Part 2: Find the mean and standard deviation of the sampling distribution</strong>
+</p>
+
+<p>
+What is the mean of the sampling distribution ?
+Ans : 0.87
+</p>
+
+<p>
+What is the standard deviation of the sampling distribution ?
+σ = √(pq/n) = 0.02378
+</p>
+
+<p>
+What is the probability that the proportion of people in the sample with a high
+school diploma is less than 85% ?
+</p>
+
+<p>
+→ use : <a href="/home/adi/Documents/my-notes/norm_cdf_calculator.py">file:norm_cdf_calculator.py</a>
+x = 0.85 , loc = 0.85 , scale = 0.02378
+Ans ~ 0.2
+</p>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Recap Hypothesis Testing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+open : <a href="/home/adi/Documents/my-notes/recap_hypothesis_testing.png">file:recap_hypothesis_testing.png</a>
+</p>
+
+<div id="For Proportion"><h2 id="For Proportion" class="header"><a href="#For Proportion">For Proportion</a></h2></div>
+
+<p>
+step 1 : Make Hypothesis and choose significance level
+step 2 : calculate p_sample
+step 3 : calculate σ of sample dist of sample prop = σ_p_hat
+</p>
+<blockquote>
+σ_p_hat = √(p₀*q₀/n) :: where p₀ and q₀ are from H₀
+</blockquote>
+<p>
+step4 : calculate mod(z)
+   | z | = | p₀ - p_sample | / σ_p_hat
+</p>
+
+<p>
+step 5: calculate p_val . check if 1-tailed or 2-tailed
+</p>
+
+<pre python>
+import scipy.stats as st
+# if 1-tailed
+p_val = st.norm.sf(abs(z))
+
+# if 2-tailed
+p_val = st.norm.sf(abs(z)) * 2
+
+</pre>
+<p>
+step 6 : if p_val &lt; α : reject H₀
+</p>
+
+<div id="For Means"><h2 id="For Means" class="header"><a href="#For Means">For Means</a></h2></div>
+
+<p>
+step1 : Make hypothesis and choose significance level
+</p>
+
+<dl>
+<dt>step2 : calculate test statistics x_bar ans sx </dt>
+<dd>x_bar → mean of sample , <span id="For Means-sx → σ of sample"></span><strong id="sx → σ of sample">sx → σ of sample</strong></dd>
+</dl>
+
+<p>
+step 3 :to calcultate z-stat = x_bar - μ₀ / std dev of sample dist of sample pop
+</p>
+
+<p>
+   i.e  z = x_bar - μ₀ / σx
+   mostly σx cannot be calculatead as σx = σ_population / √n
+   and σ_pop is rarely known
+</p>
+
+<p>
+   ∴ we approx σ_population with sx
+   we use t-stat instead of z-stat
+</p>
+<blockquote>
+when :
+</blockquote>
+<ul>
+<li>
+we dont know the true std dev of pop.
+
+<li>
+low sample size
+
+</ul>
+<blockquote>
+so this test statistics becomes a t-test
+</blockquote>
+<blockquote>
+t = x_bar - μ₀ / σx
+t = x_bar - μ₀ / (sx/√n)
+</blockquote>
+
+<p>
+step 6 : calculate p_val
+</p>
+
+
+<pre python>
+import scipy.stats as st
+# if 1-tailed
+p_val = st.t.sf(abs(t),n-1)
+
+# if 2-tailed
+p_val = st.t.sf(abs(t),n-1) * 2
+
+</pre>
+<p>
+step 6 : if p_val &lt; α : reject H₀
+</p>
+
+</body>
+</html>

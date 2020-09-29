@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Sampling Distribution of Sample Mean</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+<div id="Central Limit Theorem"><h2 id="Central Limit Theorem" class="header"><a href="#Central Limit Theorem">Central Limit Theorem</a></h2></div>
+
+<ul>
+<li>
+The central limit theorem states that if you have a population with mean μ
+  and standard deviation σ and take sufficiently large random samples from the
+  population with replacement , then the distribution of the sample means will
+  be approximately normally distributed.
+
+</ul>
+
+<ul>
+<li>
+The Central Limit Theorem states that the sampling distribution of the sample
+  means approaches a normal distribution as the sample size gets larger — no
+  matter what the shape of the population distribution.
+
+</ul>
+
+<ul>
+<li>
+This fact holds especially true for sample sizes <span id="Central Limit Theorem-≥30"></span><strong id="≥30">≥30</strong>.
+
+<li>
+If the population is normal, then the theorem holds true <span id="Central Limit Theorem-even"></span><strong id="even">even</strong> for samples smaller <span id="Central Limit Theorem-≤30"></span><strong id="≤30">≤30</strong>
+
+</ul>
+
+<div id="Standard Error"><h2 id="Standard Error" class="header"><a href="#Standard Error">Standard Error</a></h2></div>
+
+<ul>
+<li>
+s is also known as standard err.
+
+<li>
+where s is the standard dev. of the sample dist. of sample mean
+
+</ul>
+
+
+<p>
+What happens when you increase the sample size ,
+when making a sample dist of sample mean ?
+</p>
+<ul>
+<li>
+the dist. looks more and more normal
+
+<li>
+and the σ decreases
+
+</ul>
+
+<p>
+see : <a href="/home/adi/Documents/my-notes/standard_err_1.png">file:standard_err_1.png</a>
+</p>
+
+<p>
+so if we know the σ of the population
+we could find the standard deviation of the sample
+</p>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+<dl>
+<dt>s = σ / √n </dt>
+<dd>where s is the std. dev of the sample dist. of sample mean</dd>
+</dl>
+		&amp; σ is the std .dev of the pop.
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+
+<p>
+Example:
+</p>
+<ul>
+<li>
+The avg. male drinks 2L of water with std. deviation of 0.7L . You are
+  planning a full day trip with 50 men and bring 110L of water . what is the
+  chance that you will run out of water ?
+
+</ul>
+
+<dl>
+<dt>sol </dt>
+<dd>we know pop. parameter → μ = 2L , σ = 0.7</dd>
+</dl>
+<blockquote>
+sample size (n) = 50 ; water/person = 110/50 = 2.2
+→ so anything above 2.2 would mean running out of water
+→ and the s of sample dist of sample mean would be
+s = σ /√n = 0.7/√50 = 0.099 , and mean of the sample dist. of
+sample mean would be the same as pop mean.
+</blockquote>
+<blockquote>
+using <a href="/home/adi/Documents/my-notes/norm_cdf_calculator.py">file:norm_cdf_calculator.py</a>
+ans = 1 - P(x=2.2,loc=2,s=0.0.099)
+:!python norm_cdf_calculator.py
+</blockquote>
+<p>
+	ans = 0.021681218415019576
+</p>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+
+</body>
+</html>

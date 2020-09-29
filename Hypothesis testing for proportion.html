@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Hypothesis testing for proportion</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="About Proportion"><h1 id="About Proportion" class="header"><a href="#About Proportion">About Proportion</a></h1></div>
+
+<p>
+remember from : <a href="Sampling Distribution of Sample Proportion.html">Sampling Distribution of Sample Proportion</a>
+</p>
+
+<p>
+that to perform a sig test on prop
+requirements:
+</p>
+<ol>
+<li>
+random sample
+
+<li>
+np &amp; nq ≥ 10
+
+<li>
+independent sample (sample with replacement or sample size &lt; 10% of pop )
+
+</ol>
+
+
+<div id="About Proportion-Example 1"><h3 id="Example 1" class="header"><a href="#About Proportion-Example 1">Example 1</a></h3></div>
+
+<p>
+A mayor read an article which claims 8% unemployement rate . They wondered if
+that was true for their town So they <span id="About Proportion-Example 1-randomly"></span><strong id="randomly">randomly</strong> sampled 200 residents .
+Out of the sample 22 were unemployed.
+</p>
+
+<p>
+H₀ : p = 0.08
+H₁ : p ≠ 0.08
+</p>
+
+<dl>
+<dt>soll </dt>
+</dl>
+<p>
+p_sample = 22/200 = 0.11
+</p>
+
+<p>
+Let's take α = 0.05
+</p>
+
+<p>
+a ẕ-test would show how far 0.11 is from 0.8 .
+pop proportion standard dev is not known
+so the best estimate would be √(pq/n)
+</p>
+
+<p>
+s = √(0.08*0.92) / √(200) = 0.0192  #<span class="todo">XXX</span> note that s was calculated using P₀
+</p>
+
+<p>
+ẕ = p₀ - p_sample / s
+= -0.03 / 0.0192 (- :dont matter)
+</p>
+
+<p>
+Ans : 1.5625 dev away from p₀
+from - <a href="Modelling Data Distribution.html">Modelling Data Distribution</a>
+</p>
+
+<p>
+<span id="About Proportion-Example 1-fail to reject H₀"></span><strong id="fail to reject H₀">fail to reject H₀</strong>
+</p>
+
+
+<div id="About Proportion-Calculating P-value given ẕ-stat"><h2 id="Calculating P-value given ẕ-stat" class="header"><a href="#About Proportion-Calculating P-value given ẕ-stat">Calculating P-value given ẕ-stat</a></h2></div>
+
+<p>
+Fay reads an article which states that 26% of Americans can speak more than 1
+language . Fay was curious if it was higher ,so she radomly sampled 120 people of which 40 could speak &gt;1 lang.
+what is the approx P-value for fay's test.
+</p>
+
+<p>
+Hypothesis
+H₀ : p = 0.26
+H₁ : p &gt; 0.26 (one sided)
+</p>
+
+<p>
+P₀ = 0.26
+P_sample = 40/120 = 0.33
+</p>
+
+<p>
+since pop σ is not given σ ~ s
+s = √(pq/n) = √(0.26*0.74/120) = 0.04
+</p>
+
+<p>
+| ẕ | = | (0.26-0.33) / 0.04 | = 0.07/0.04
+| z | = 1.75
+</p>
+
+<pre python>
+import scipy.stats as st
+z_value =1.75
+# sf stands for survival function :: 1 -cdf(z_val)
+p_val = st.norm.sf(abs(z_val)) # for 1 sided
+# p_val = st.norm.sf(abs(z_val)) * 2 # for 2 sided
+print(p_val)
+</pre>
+
+<p>
+looking this on z-table : → 0.03.. ~ 3%
+p_val = 3.3%
+since p_val &lt; α
+H₀ could be rejected.
+</p>
+
+<div id="About Proportion-Calculating P-value given ẕ-stat-Example2"><h3 id="Example2" class="header"><a href="#About Proportion-Calculating P-value given ẕ-stat-Example2">Example2</a></h3></div>
+
+<p>
+Q : <a href="/home/adi/Documents/my-notes/prop_pval.png">file:prop_pval.png</a>
+α = 0.05
+H₀ : p = 0.2
+H₁ : p &lt; 0.2 (one-sided)
+p_sample = 11/65 = 0.169
+s = √(0.2*0.8/65) = 0.049
+z = 0.169-0.2 / 0.049
+z_abs = 0.625
+</p>
+
+<pre python>
+import scipy.stats as st
+z_value =0.625
+# sf stands for survival function :: 1 -cdf(z_val)
+p_val = st.norm.sf(abs(z_val)) # for 1 sided
+# p_val = st.norm.sf(abs(z_val)) * 2 # for 2 sided
+print(p_val)
+</pre>
+<p>
+p_val -&gt; 0.2659855.. ~ 0.266
+p_val =26.6% which is way more than significance level ⇒ 5%
+</p>
+
+<p>
+∴ Fail to reject H₀
+</p>
+
+</body>
+</html>

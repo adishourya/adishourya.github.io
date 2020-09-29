@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>sesnsitivity_specificity</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+
+
+<p>
+A confusion  matrix for 2 outcomes looks as such
+</p>
+
+<table>
+<tr>
+<th>
+&nbsp;
+</th>
+<th>
+Actual Positive
+</th>
+<th>
+Actual Negative
+</th>
+</tr>
+<tr>
+<th>
+Predicted Positive
+</th>
+<th>
+TP
+</th>
+<th>
+FP
+</th>
+</tr>
+<tr>
+<th>
+Predicted Negative
+</th>
+<th>
+FN
+</th>
+<th>
+TN
+</th>
+</tr>
+</table>
+
+<p>
+Once the confusion matrix is filled out we can calculate 2 useful matrix sensitivity and specificity
+</p>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+<dl>
+<dt><span id="-Sensitivity"></span><strong id="Sensitivity">Sensitivity</strong> </dt>
+<dd>Tells us what percentage of patients with heart disease were</dd>
+</dl>
+correctly classified . (i.e the first col.)
+</p>
+
+<p>
+Sensitivity = True Positive / Actual Positive
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+<dl>
+<dt><span id="-Specificity"></span><strong id="Specificity">Specificity</strong> </dt>
+<dd>Tells us what percentage of patients without heart disease</dd>
+</dl>
+were correctly classified
+</p>
+
+<dl>
+<dt>Specificity </dt>
+<dd>True Negative / Actual Negative</dd>
+</dl>
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+
+<p>
+Calculating Sensitivity and specificity for 2 rows and 2 cols is straight forward
+so lets try calculating it for 3 rows and 3 cols
+In such case sensitivity and specificity are calculated for each category
+</p>
+
+<p>
+For e.g lets say people have different opinions on the game C.S → Good , Meh , Dead Game
+There are diff predictors for such opinions such as age , gender , country .
+Our models perfomance can be seen in the confusion matrix below.
+</p>
+
+
+<table>
+<tr>
+<td>
+&nbsp;
+</td>
+<td>
+Actually Good
+</td>
+<td>
+Actually Meh
+</td>
+<td>
+Actually Dead
+</td>
+</tr>
+<tr>
+<td>
+Predicted Good
+</td>
+<td>
+12
+</td>
+<td>
+102
+</td>
+<td>
+93
+</td>
+</tr>
+<tr>
+<td>
+Predicted Meh
+</td>
+<td>
+112
+</td>
+<td>
+23
+</td>
+<td>
+77
+</td>
+</tr>
+<tr>
+<td>
+Predicted Dead
+</td>
+<td>
+83
+</td>
+<td>
+92
+</td>
+<td>
+17
+</td>
+</tr>
+</table>
+
+<p>
+lets say 1 → Good , 2 →  Meh , 3 → Dead
+</p>
+
+
+
+<div id="VISUALLY AID → ALWAYS TRY TO KEEP VARIABLE TO LEFT AND PERFORM AS IF IT WERE 2 DIMENSIONAL"><h4 id="VISUALLY AID → ALWAYS TRY TO KEEP VARIABLE TO LEFT AND PERFORM AS IF IT WERE 2 DIMENSIONAL" class="header"><a href="#VISUALLY AID → ALWAYS TRY TO KEEP VARIABLE TO LEFT AND PERFORM AS IF IT WERE 2 DIMENSIONAL">VISUALLY AID → ALWAYS TRY TO KEEP VARIABLE TO LEFT AND PERFORM AS IF IT WERE 2 DIMENSIONAL</a></h4></div>
+<blockquote>
+Actual →
+</blockquote>
+<p>
+P        |----|----|
+R        | tp | fn |
+E        | fp | tn |
+D        |----|----|
+↓
+</p>
+
+<p>
+Sensitivity₁ = True Positive for Good / Actual Positive for Good (correctly classified 1)
+12 / 12 + 112 + 83
+12 / 207
+0.0579
+</p>
+
+<p>
+Specificity₁ =  True Negative For Good / Actual Negative for Good
+now , this needs patience
+True Negative = bottom right should be true negative =209
+Actual Negative = True Negative + False Positive
+False Positive =  195
+Actual Negative = 209 + 195 = 404
+</p>
+
+<p>
+= 209 / 404
+</p>
+
+<p>
+And so on ...
+But more importantly when to choose which metric
+</p>
+<ol>
+<li>
+If correctly classifying positive (in cases of hospital) is more imp. choose sensitivity
+
+<li>
+If correctly classifying negative (in cases of insurace) is more imp. choose specificity.
+
+</ol>
+
+</body>
+</html>

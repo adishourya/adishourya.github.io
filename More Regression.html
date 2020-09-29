@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>More Regression</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="ANOVA"><h1 id="ANOVA" class="header"><a href="#ANOVA">ANOVA</a></h1></div>
+
+<ul>
+<li>
+Anova is a statistical technique that is used to check if the means of 2 or
+  more group are significantly different from one another
+
+<li>
+Anova checks the impact of one or more factors by comparing means of
+  different samples
+
+<li>
+Another measure to compare the samples is called a t-test
+
+<li>
+when we have only 2 samples t-test and anova are the same thing
+
+</ul>
+
+<p>
+Lets Consider an example
+<table>
+<tr>
+<th>
+col1
+</th>
+<th>
+col2
+</th>
+<th>
+col3
+</th>
+</tr>
+<tr>
+<th>
+3
+</th>
+<th>
+5
+</th>
+<th>
+5
+</th>
+</tr>
+<tr>
+<th>
+2
+</th>
+<th>
+3
+</th>
+<th>
+6
+</th>
+</tr>
+<tr>
+<th>
+1
+</th>
+<th>
+4
+</th>
+<th>
+7
+</th>
+</tr>
+</table>
+</p>
+
+<p>
+grand mean = (μ₁ + μ₂ + μ₃) / 3
+=( (6/3) + (12/3 ) + (18/3))  / 3
+=( 2 + 4 + 6) /3
+= 12 / 3
+= 4
+</p>
+
+<div id="ANOVA-Total Sum of Squares (SST)"><h2 id="Total Sum of Squares (SST)" class="header"><a href="#ANOVA-Total Sum of Squares (SST)">Total Sum of Squares (SST)</a></h2></div>
+
+<dl>
+<dt>SST </dt>
+<dd>Total sum of squares</dd>
+</dl>
+<p>
+Σ (x-μgm)**2
+(3-4)²  +  (2-4)²  +  (1-4)²  +  (5-4)²  +  (3-4)²  +  (4-4)²  +  (5-4)²  +  (6-4)²  +  (7-4)²
+1       +  4       +  9       +  1       +  1       +  0       +  1       +  4       +  9
+30
+and the dof = sample points -1 = 9 -1 =8
+</p>
+
+<p>
+<span id="ANOVA-Total Sum of Squares (SST)-SST"></span><strong id="SST">SST</strong> = variance within group + variance between group
+</p>
+
+<div id="ANOVA-Total Sum of Squares within (SSW) &amp; Between (SSB)"><h2 id="Total Sum of Squares within (SSW) &amp; Between (SSB)" class="header"><a href="#ANOVA-Total Sum of Squares within (SSW) &amp; Between (SSB)">Total Sum of Squares within (SSW) &amp; Between (SSB)</a></h2></div>
+<p>
+SSW
+Total sum of sqaures within each group
+group 1 → (3-2)² + (2-2)² + (1-2)² = 1 + 0 + 1 = 2
+group 2 → (5-4)² + (3-4)² + (4-4)² = 1 + 1 + 0 = 2
+group 3 → (5-6)² + (6-6)² + (7-6)² = 1 + 0 + 1 = 2
+Total sum of squares within group = 6
+</p>
+
+<p>
+dof = no.of group * (size -1 ) = 3 * 2 = 6
+SSB
+Σ (x_bar - μ_grand_mean) * ni
+= 3(2-4)² + 3(4-4)² + 3(6-4)²
+= 3(4+4)
+= 24
+</p>
+
+<p>
+dof = no.of groups -1 = 3 - 1 = 2
+</p>
+
+<div id="ANOVA-Total Sum of Squares within (SSW) &amp; Between (SSB)-Example"><h3 id="Example" class="header"><a href="#ANOVA-Total Sum of Squares within (SSW) &amp; Between (SSB)-Example">Example</a></h3></div>
+<p>
+Lets say the above table was for some food catergory taking some test
+</p>
+
+<table>
+<tr>
+<th>
+Food1
+</th>
+<th>
+Food2
+</th>
+<th>
+Food3
+</th>
+</tr>
+<tr>
+<th>
+3
+</th>
+<th>
+5
+</th>
+<th>
+5
+</th>
+</tr>
+<tr>
+<th>
+2
+</th>
+<th>
+3
+</th>
+<th>
+6
+</th>
+</tr>
+<tr>
+<th>
+1
+</th>
+<th>
+4
+</th>
+<th>
+7
+</th>
+</tr>
+</table>
+
+<p>
+H₀ = μ₁ = μ₂ = μ₃
+H₁ = not
+F-statistic  = (SSB / dof(B)) / (SSW/dof(W)) = (24/2) / (6/6) = 12
+</p>
+
+</body>
+</html>

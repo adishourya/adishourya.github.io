@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Mostly used</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<p>
+Mostly Probability Based Sampling Techniques are used in ML
+Read : <a href="https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/">https://machinelearningmastery.com/random-oversampling-and-undersampling-for-imbalanced-classification/</a>
+local pdf: <a href="/home/adi/Documents/my-notes/sampling_mostly_used.pdf">Popular Sampling Techniques</a>
+</p>
+
+
+
+<div id="1) Simple Random Sampling"><h2 id="1) Simple Random Sampling" class="header"><a href="#1) Simple Random Sampling">1) Simple Random Sampling</a></h2></div>
+<ul>
+<li>
+where each ε in pop has equal chance of being in sample
+
+</ul>
+
+<pre>
+sample_df = df.sample(sample_size)
+</pre>
+
+<div id="2) Stratified Sampling"><h2 id="2) Stratified Sampling" class="header"><a href="#2) Stratified Sampling">2) Stratified Sampling</a></h2></div>
+
+<ul>
+<li>
+Where the sample has the sampe proportion of types of ε as in pop
+
+<li>
+e.g Assume that we need to estimate the average number of votes for each
+  candidate in an election. Assume that the country has 3 towns:
+
+</ul>
+
+<p>
+Town A has 1 million factory workers,
+</p>
+
+<p>
+Town B has 2 million workers, and
+</p>
+
+<p>
+Town C has 3 million retirees.
+</p>
+
+<p>
+We can choose to get a random sample of size 60 over the entire population but
+there is some chance that the random sample turns out to be not well balanced
+across these towns and hence is biased causing a significant error in
+estimation.
+</p>
+
+<p>
+Instead, if we choose to take a random sample of 10, 20 and 30 from Town A, B
+and C respectively then we can produce a smaller error in estimation for the
+same total size of the sample.
+</p>
+
+<pre py>
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y,
+                                                    stratify=y,
+                                                    test_size=0.25)
+</pre>
+
+
+<div id="3) Random Oversampling and UNdersampling for imbalanced classification"><h2 id="3) Random Oversampling and UNdersampling for imbalanced classification" class="header"><a href="#3) Random Oversampling and UNdersampling for imbalanced classification">3) Random Oversampling and UNdersampling for imbalanced classification</a></h2></div>
+
+<ul>
+<li>
+Imbalanced datasets are those where there is a severe skew in the class
+  distribution, such as 1:100 or 1:1000 examples in the minority class to the
+  majority class.
+
+</ul>
+
+<ul>
+<li>
+This bias in the training dataset can influence many machine learning
+  algorithms, leading some to ignore the minority class entirely. This is a
+  problem as it is typically the minority class on which predictions are most
+  important.
+
+</ul>
+
+<ul>
+<li>
+One approach to addressing the problem of class imbalance is to randomly
+  resample the training dataset. The two main approaches to randomly resampling
+  an imbalanced dataset are to delete examples from the majority class, called
+  undersampling, and to duplicate examples from the minority class, called
+  oversampling.
+
+</ul>
+
+
+
+<div id="3) Random Oversampling and UNdersampling for imbalanced classification-Random Resampling Imbalanced Datasets"><h3 id="Random Resampling Imbalanced Datasets" class="header"><a href="#3) Random Oversampling and UNdersampling for imbalanced classification-Random Resampling Imbalanced Datasets">Random Resampling Imbalanced Datasets</a></h3></div>
+
+<ul>
+<li>
+Resampling involves creating a new transformed version of the training
+  dataset in which the selected examples have a different class distribution.
+
+</ul>
+
+<p>
+There are two main approaches to random resampling for imbalanced classification; they are oversampling and undersampling.
+</p>
+
+<ol>
+<li>
+Random Oversampling: Randomly <span id="3) Random Oversampling and UNdersampling for imbalanced classification-Random Resampling Imbalanced Datasets-duplicate"></span><strong id="duplicate">duplicate</strong> examples in the minority
+   class.Random oversampling involves randomly selecting examples from the
+   minority class, with replacement, and adding them to the training dataset.
+
+</ol>
+<p>
+|
+			<span id="3) Random Oversampling and UNdersampling for imbalanced classification-Random Resampling Imbalanced Datasets----Drawback---"></span><strong id="---Drawback---">---Drawback---</strong>
+</p>
+
+<ul>
+<li>
+the random oversampling may increase the likelihood of occurring
+	  overfitting, since it makes exact copies of the minority class
+	  examples.
+
+</ul>
+
+
+<ol>
+<li>
+Random Undersampling: Randomly <span id="3) Random Oversampling and UNdersampling for imbalanced classification-Random Resampling Imbalanced Datasets-delete"></span><strong id="delete">delete</strong> examples in the majority class.
+
+</ol>
+
+<p>
+Both approaches can be <span id="3) Random Oversampling and UNdersampling for imbalanced classification-Random Resampling Imbalanced Datasets-repeated"></span><strong id="repeated">repeated</strong> until the desired class distribution is
+achieved in the training dataset, (hence the <span id="3) Random Oversampling and UNdersampling for imbalanced classification-Random Resampling Imbalanced Datasets-re"></span><strong id="re">re</strong>-sampling) such as an equal
+split (naive resampling) across the classes.
+</p>
+
+<p>
+			<span id="3) Random Oversampling and UNdersampling for imbalanced classification-Random Resampling Imbalanced Datasets----Drawback---"></span><strong id="---Drawback---">---Drawback---</strong>
+</p>
+
+<ul>
+<li>
+in random under-sampling (potentially), vast quantities of data are
+	  discarded. […] This can be highly problematic, as the loss of such
+	  data can make the decision boundary between minority and majority
+	  instances harder to learn, resulting in a loss in classification
+	  performance.
+
+</ul>
+
+
+
+
+
+<div id="3) Random Oversampling and UNdersampling for imbalanced classification-Imbalanced-Learn Library"><h3 id="Imbalanced-Learn Library" class="header"><a href="#3) Random Oversampling and UNdersampling for imbalanced classification-Imbalanced-Learn Library">Imbalanced-Learn Library</a></h3></div>
+<ol>
+<li>
+Random Oversampler
+
+</ol>
+
+<p>
+Random oversampling can be implemented using the RandomOverSampler class.
+</p>
+
+<p>
+The class can be defined and takes a sampling_strategy argument that can be set
+to “minority” to automatically balance the minority class with majority class
+</p>
+
+
+<pre py>
+# first method
+from imblearn.over_sampling import RandomOverSampler
+oversample = RandomOverSampler(sampling_stratergy='minority')
+# second
+oversample = RandomOverSampler(sampling_stratergy=0.5)
+</pre>
+
+<dl>
+<dt>The First method </dt>
+<dd>This means that if the majority class had 1,000 examples</dd>
+</dl>
+<p>
+and the minority class had 100, this strategy would oversampling the minority
+class so that it has 1,000 examples ← Naive Resampling.
+</p>
+
+<dl>
+<dt>Second Method </dt>
+<dd> floating point value can be specified to indicate the ratio</dd>
+</dl>
+<p>
+of minority class majority examples in the transformed dataset to majority
+examples ← usually done for binary classification problem
+</p>
+
+<ol>
+<li>
+Random UnderSampler
+
+</ol>
+
+<pre py>
+from imblearn.under_sampling import RandomUnderSampler
+# first method
+oversample = RandomUnderSampler(sampling_stratergy='majority')
+# second
+oversample = RandomUnderSampler(sampling_stratergy=0.5)
+</pre>
+
+<ul>
+<li>
+works very similar as above
+
+</ul>
+
+
+<div id="3) Random Oversampling and UNdersampling for imbalanced classification-Combining Random Oversampling and Undersampling"><h3 id="Combining Random Oversampling and Undersampling" class="header"><a href="#3) Random Oversampling and UNdersampling for imbalanced classification-Combining Random Oversampling and Undersampling">Combining Random Oversampling and Undersampling</a></h3></div>
+
+<p>
+Interesting results may be achieved by combining both random oversampling and undersampling.
+</p>
+
+<ul>
+<li>
+For example, a modest amount of oversampling can be applied to the minority
+  class to improve the bias towards these examples, whilst also applying a
+  modest amount of undersampling to the majority class to reduce the bias on
+  that class.
+
+</ul>
+
+<ul>
+<li>
+This can result in improved overall performance compared to performing one or
+  the other techniques in isolation.
+
+</ul>
+
+<pre py>
+...
+# define oversampling strategy → oversample only be a little amount
+over = RandomOverSampler(sampling_strategy=0.1)
+# fit and apply the transform
+X, y = over.fit_resample(X, y)
+# define undersampling strategy → undersample only by a little
+under = RandomUnderSampler(sampling_strategy=0.5)
+# fit and apply the transform
+X, y = under.fit_resample(X, y)
+
+</pre>
+
+<div id="Tomek Links"><h2 id="Tomek Links" class="header"><a href="#Tomek Links">Tomek Links</a></h2></div>
+
+
+<ul>
+<li>
+Under Sampling Technique
+
+</ul>
+<dl>
+<dt>Look </dt>
+<dd><a href="/home/adi/Documents/my-notes/tomek_links.png">tomek links</a></dd>
+</dl>
+
+<pre py>
+from imblearn.under_sampling import TomekLinks
+
+tl = TomekLinks(return_indices=True, ratio='majority')
+X_tl, y_tl, id_tl = tl.fit_sample(X, y)
+
+</pre>
+
+<div id="SMOTE"><h2 id="SMOTE" class="header"><a href="#SMOTE">SMOTE</a></h2></div>
+
+<ul>
+<li>
+Over Sampling Technique
+
+</ul>
+<p>
+Look : <a href="/home/adi/Documents/my-notes/smote.png">smote</a>
+</p>
+
+<pre py>
+from imblearn.over_sampling import SMOTE
+
+smote = SMOTE(ratio='minority')
+X_sm, y_sm = smote.fit_sample(X, y)
+</pre>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>summarizing quant data</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="IQR"><h1 id="IQR" class="header"><a href="#IQR">IQR</a></h1></div>
+
+<dl>
+<dt>Basically </dt>
+<dd>diff b/n the first half and the second half</dd>
+</dl>
+
+<ul>
+<li>
+suppose sample: 1,3,2,4,6,5,7,9,8
+
+<li>
+then arrange them : 1,2,3,4,<span id="IQR-5"></span><strong id="5">5</strong>,6,7,8,9
+
+<li>
+so we got 4 nos on either side of 5 :: median
+
+<li>
+first half median 7.5
+
+<li>
+second half median 2.5
+
+<li>
+IQR = 7.5 - 2.5 = 5
+
+</ul>
+
+<div id="IQR-Box Plot"><h2 id="Box Plot" class="header"><a href="#IQR-Box Plot">Box Plot</a></h2></div>
+
+<p>
+.   | ---------- [             |               ]--------------- |
+</p>
+<blockquote>
+q1            q2             q3
+</blockquote>
+
+<table class='center'>
+<tr>
+<td>
+------------IQR-------------
+</td>
+</tr>
+</table>
+
+<p>
+lower whisker = q1(median of lower half) - 1.5 * IQR
+upper whisker = q3(median of upper half) + 1.5* IQR
+</p>
+
+</body>
+</html>

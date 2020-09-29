@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="Stylesheet" type="text/css" href="style.css">
+<title>Basics of hypothesis testing</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<div id="Idea Behind Hypothesis Testing"><h1 id="Idea Behind Hypothesis Testing" class="header"><a href="#Idea Behind Hypothesis Testing">Idea Behind Hypothesis Testing</a></h1></div>
+
+
+<p>
+suppose there is a cholestrol test which predicts correct 99% of the time
+and there are 100 people in the clinic
+</p>
+
+<p>
+All ✓ : 100C₀ (0.99)^100 → 0.366
+1 X 99 ✓ : 100C₁ (0.99)^99 x 0.01 → 0.37
+and so on ..
+</p>
+
+<p>
+hypothesis is this that my new test is accurate 99% time
+</p>
+
+<p>
+Hypothesis is made on pop. not on the sample
+</p>
+
+<p>
+H₀: no diff hypothesis ; statement of equality
+H₁: news ; new discovery
+</p>
+
+
+<div id="Idea Behind Hypothesis Testing-P-values &amp; significance test"><h2 id="P-values &amp; significance test" class="header"><a href="#Idea Behind Hypothesis Testing-P-values &amp; significance test">P-values &amp; significance test</a></h2></div>
+
+<ul>
+<li>
+Suppose i run a website that currently has white background and i know μ
+  amount of time people spent on the webite which is 20 min. Ideally i would
+  want people to spend more time on my website for which i decide to change the
+  background to a darker shade.But after the change how do i feel good about
+  the change having the intended consequence?
+
+</ul>
+
+<ul>
+<li>
+Well thats where significance test comes into play
+
+</ul>
+
+<p>
+The next step would be to setup the hypothesis
+</p>
+
+<p>
+μ₀ = mean amt of time people spent on white background ; μ₁ = mean amt of time
+people spent on dark background
+</p>
+
+<p>
+→ H₀: no change : μ₀ = μ₁
+→ H₁: change : μ₀ &lt; μ₁
+</p>
+
+<ul>
+<li>
+Then we will setup  a significance level α
+  α = 0.05 i.e 5%
+
+</ul>
+
+<p>
+  now we will sample out people who have now started using the new website
+  and calculate x_bar , s ...
+</p>
+
+<p>
+  and see the likelyhood of drawing that sample
+  if the likelyhood is less than 5% we could reject the null hypothesis
+  else we would <span id="Idea Behind Hypothesis Testing-P-values &amp; significance test-fail"></span><strong id="fail">fail</strong> to reject null hypothesis
+</p>
+
+<ul>
+<li>
+suppose now we have drawn the sample of size =100 for which
+  x_bar = 25 and s
+
+</ul>
+
+<ul>
+<li>
+Now we would calculate P-value i.e probability value
+
+</ul>
+
+<ul>
+<li>
+P-value is the prob. of getting sample statistics (equally unlikely + rarer) given that H₀ is true
+
+<li>
+P-value → (x_bar≥25|H₀)
+  P-value &lt; α : we could reject null hypo
+  P-value &gt;= α : <span id="Idea Behind Hypothesis Testing-P-values &amp; significance test-fail"></span><strong id="fail">fail</strong> to reject null hypo
+
+</ul>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+<div id="Idea Behind Hypothesis Testing-Intro to Type 1 &amp; 2 Rule"><h2 id="Intro to Type 1 &amp; 2 Rule" class="header"><a href="#Idea Behind Hypothesis Testing-Intro to Type 1 &amp; 2 Rule">Intro to Type 1 &amp; 2 Rule</a></h2></div>
+
+<table>
+<tr>
+<th>
+decision ▼ / Reality ▶
+</th>
+<th>
+H₀ is true
+</th>
+<th>
+H₀ is false
+</th>
+</tr>
+<tr>
+<th>
+reject H₀
+</th>
+<th>
+Type I error → α
+</th>
+<th>
+✓
+</th>
+</tr>
+<tr>
+<th>
+fail to reject H₀
+</th>
+<th>
+✓
+</th>
+<th>
+Type II error → β
+</th>
+</tr>
+</table>
+
+<dl>
+</dl>
+<p>
+where α and β are
+α ==    prob of making a type 1 err
+β ==    prob of making a type 2 err
+</p>
+
+<p>
+Why is Type I error = α ?
+→ There is a 0.05 % chance of getting a sample which is rare enough to reject H₀
+</p>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+
+<div id="Idea Behind Hypothesis Testing-Intro to Type 1 &amp; 2 Rule-Identifying type I and type II"><h3 id="Identifying type I and type II" class="header"><a href="#Idea Behind Hypothesis Testing-Intro to Type 1 &amp; 2 Rule-Identifying type I and type II">Identifying type I and type II</a></h3></div>
+
+<p>
+A poll showed an unemployement rate of 9% . So the mayor conducts a poll of her
+own to see if it's different than 9%
+</p>
+
+<p>
+Here are the hypothesis
+H₀: p = 0.09
+H₁: p ≠ 0.09
+</p>
+
+<ol>
+<li>
+when would the mayor make a type 1 err ?
+
+<li>
+when would she make a type II err ?
+
+</ol>
+
+<p>
+Ans :
+</p>
+<ol>
+<li>
+to accept H₁ even when H₀ was true.
+
+<li>
+2) to accept H₀ even when H₁ was true
+
+</ol>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+
+<div id="Idea Behind Hypothesis Testing-Intro to power of significance"><h2 id="Intro to power of significance" class="header"><a href="#Idea Behind Hypothesis Testing-Intro to power of significance">Intro to power of significance</a></h2></div>
+
+<p>
+Power = <em><span id="Idea Behind Hypothesis Testing-Intro to power of significance-Probability of correctly rejecting H₀"></span><strong id="Probability of correctly rejecting H₀">Probability of correctly rejecting H₀</strong></em>  → P(reject H₀|H₀ is false)
+</p>
+
+<p>
+it could also be seen as
+Power = 1 - incorrectly rejecting H₀
+Power = 1 - P(not reject H₀|H₀ is false)
+Power = 1 - P(Type II) = 1 - β
+</p>
+
+<p>
+<span id="Idea Behind Hypothesis Testing-Intro to power of significance-Must See"></span><strong id="Must See">Must See</strong>
+<a href="/home/adi/Documents/my-notes/power_hypothesis.png">file:power_hypothesis.png</a>
+</p>
+
+<p>
+∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙
+</p>
+
+</body>
+</html>
